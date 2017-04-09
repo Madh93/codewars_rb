@@ -48,7 +48,7 @@ namespace :kata do
       end
     end
 
-    File.open(requires_file, 'a') { |f| f << "require '#{kata}/#{kata}'" }
+    File.open(requires_file, 'a') { |f| f << "require '#{kata}/#{kata}'\n" }
 
     # Create Kata directory
     if Dir.exist?("#{kyu_path}/#{kata}")
