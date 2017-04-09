@@ -143,7 +143,7 @@ namespace :kata do
 
     katas = 'lib/kata'
     Dir.entries(katas).reject { |e| e.include?('.') }.each do |level|
-      next unless level[-1] == options[:kyu]
+      next unless (level[-1] == options[:kyu]) || options[:kyu].nil?
       puts "\nKyu #{level[-1]}:"
       Dir.entries("#{katas}/kyu#{level[-1]}").reject { |e| e.include?('.') }.each do |k|
         puts "    #{k}"
