@@ -79,6 +79,7 @@ namespace :kata do
       f << "require 'spec_helper'\n\n"
       f << "describe Kata::Kyu#{level} do\n"
       f << "  it '' do\n"
+      f << "    Kata::Kyu#{level}.#{kata}().must_equal()\n"
       f << "  end\n"
       f << "end\n"
     end
@@ -115,7 +116,7 @@ namespace :kata do
     requires_file = "#{kyu_path}.rb"
     File.open("#{requires_file}.tmp", "w") do |out_file|
       File.foreach(requires_file) do |line|
-        out_file.puts line unless line == "require '#{kata}/#{kata}'"
+        out_file.puts line unless line.include?("require '#{kata}/#{kata}'")
       end
     end
 
